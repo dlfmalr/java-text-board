@@ -15,15 +15,15 @@ public class Main {
 
         ArrayList<String> titlelist = new ArrayList<>();
         ArrayList<String> bodylist = new ArrayList<>();
-        ArrayList<Integer> numlist = new ArrayList<>();
+        ArrayList<Integer> idlist = new ArrayList<>();
+        int latestarticleId = 1;
 
         //String title = ""; //추후에 입력을 통해 값이 입력될거기 때문에 지금 값이 필요없음
         //String story = "";
 
         while(true) { //반복 조건이 true이기 때문에 무한 반복
-            String cmd = scan.nextLine();
             System.out.println("명령어 : ");
-
+            String cmd = scan.nextLine();
 
             if(cmd.equals("exit")) { //숫자가 아닌 경우 같다라는 표현을 할 때 ==이 아닌 .epuals() 를 사용해야 한다.
                 System.out.println("프로그램을 종료합니다.");
@@ -32,11 +32,11 @@ public class Main {
 
             else if(cmd.equals("add")) {
 
-                System.out.println("게시물 번호를 입력해주세요 : ");
-                int num = scan.nextInt();
-                scan.nextLine(); //개행 문자 소비
+                //System.out.println("게시물 번호를 입력해주세요 : ");
+                //int num = scan.nextInt();
+                //scan.nextLine(); //개행 문자 소비
 
-                numlist.add(num);
+                //numlist.add(num);
 
                 System.out.println("게시물 제목을 입력해주세요 : ");
                 String title = scan.nextLine();
@@ -46,6 +46,9 @@ public class Main {
                 String body = scan.nextLine();
                 bodylist.add(body);
 
+                idlist.add(latestarticleId);
+                latestarticleId++;
+
                 System.out.println("게시물이 등록되었습니다.");
             }
 
@@ -53,8 +56,8 @@ public class Main {
                 System.out.println("==============");
                 for(int i = 0; i < titlelist.size(); i++) {
 
-                    int num = numlist.get(i);
-                    System.out.printf("번호 : %d\n", num);
+                    //int num = idlist.get(i);
+                    //System.out.printf("번호 : %d\n", num);
 
                     String title = titlelist.get(i);
                     System.out.printf("제목 : %s\n", title);
@@ -69,7 +72,7 @@ public class Main {
                 System.out.println("수정할 게시물 번호 : ");
                 int num = scan.nextInt();
                 scan.nextLine();
-                if(num > 0 && num <= numlist.size()) {
+                if(num > 0 && num <= idlist.size()) {
                     System.out.println("제목 수정 : ");
                     String newtitle = scan.nextLine();
                     titlelist.set(num - 1, newtitle);
@@ -89,10 +92,10 @@ public class Main {
                 System.out.println("삭제할 게시물 번호 : ");
                 int num = scan.nextInt();
                 scan.nextLine();
-                if(num > 0 && num <= numlist.size()) {
+                if(num > 0 && num <= idlist.size()) {
                     titlelist.remove(num - 1);
                     bodylist.remove(num - 1);
-                    numlist.remove(num - 1);
+                    idlist.remove(num - 1);
 
                     System.out.println(num + "번 게시물이 삭제되었습니다.");
 
@@ -104,16 +107,16 @@ public class Main {
             else if(cmd.equals("detail")) {
                 System.out.println("상세보기 할 게시물 번호를 입력해주세요 : ");
                 int num =scan.nextInt();
-                scan.nextLine();
-                if(num > 0 && num <= numlist.size()) {
-
-
+                //scan.nextLine();
+                if(num > 0 && num <= idlist.size()) {
+                    String title = scan.nextLine();
+                    String body = scan.nextLine();
+                    int date = scan.nextInt();
                     System.out.println("==============");
                     System.out.printf("번호 : %d\n", num);
-                    String title = scan.nextLine();
                     System.out.printf("제목 : %s\n", title);
-                    String body = scan.nextLine();
                     System.out.printf("내용 : %s\n", body);
+                    System.out.printf("등록날짜 : %d\n", date);
                     System.out.println("==============");
                 }
                 else {
@@ -132,7 +135,6 @@ public class Main {
         //    }
         //    System.out.println(i);
         //}
-
 
     }
 }
