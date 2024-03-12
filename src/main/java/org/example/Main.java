@@ -70,11 +70,11 @@ public class Main {
                 int num = scan.nextInt();
                 scan.nextLine();
                 if(num > 0 && num <= numlist.size()) {
-                    System.out.println("제목 : ");
+                    System.out.println("제목 수정 : ");
                     String newtitle = scan.nextLine();
                     titlelist.set(num - 1, newtitle);
 
-                    System.out.println("내용 : ");
+                    System.out.println("내용 수정 : ");
                     String newbody = scan.nextLine();
                     bodylist.set(num - 1, newbody);
 
@@ -99,6 +99,25 @@ public class Main {
                 }
                 else {
                     System.out.println("없는 게시물 번호입니다.");
+                }
+            }
+            else if(cmd.equals("detail")) {
+                System.out.println("상세보기 할 게시물 번호를 입력해주세요 : ");
+                int num =scan.nextInt();
+                scan.nextLine();
+                if(num > 0 && num <= numlist.size()) {
+
+
+                    System.out.println("==============");
+                    System.out.printf("번호 : %d\n", num);
+                    String title = scan.nextLine();
+                    System.out.printf("제목 : %s\n", title);
+                    String body = scan.nextLine();
+                    System.out.printf("내용 : %s\n", body);
+                    System.out.println("==============");
+                }
+                else {
+                    System.out.println("존재하지 않는 게시물 번호입니다.");
                 }
             }
 
