@@ -1,19 +1,24 @@
 package org.example;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Article {
     private int id; //번호
     private String title; //제목
-    private String body;
+    private String body; //내용
+    private String regDate; //생성날짜
+    private int hit; //조회수
 
-    private int date;
 
-    public Article() {
-    }
-    public Article(int id, String title, String body, int date) {
+    public Article(int id, String title, String body, String regDate, int hit) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.date = date;
+        this.regDate = regDate;
+        this.hit = hit;
     }
 
     public int getId() {
@@ -40,11 +45,23 @@ public class Article {
         this.body = body;
     }
 
-    public int getDate() {
-        return date;
+    public String getRegDate() {
+        return regDate;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setRegDate(String regDate) {
+        this.regDate = regDate;
+    }
+
+    public int getHit() {
+        return hit;
+    }
+
+    public void setHit(int hit) {
+        this.hit = hit;
+    }
+    public void increaseHit() {
+        hit++;
     }
 }
+
