@@ -12,6 +12,9 @@ public class Article {
     private String regDate; //생성날짜
     private int hit; //조회수
 
+    public Article() {
+
+    }
 
     public Article(int id, String title, String body, String regDate, int hit) {
         this.id = id;
